@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CodingExercise" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="progressBarGray" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@android:color/darker_gray</item>
+    </style>
+</resources>

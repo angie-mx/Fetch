@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Fetch Coding Exercise</string>
+    <string name="app_description">Displaying data by listId</string>
+    <string name="error_message">Error retrieving the content</string>
+</resources>
