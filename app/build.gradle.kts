@@ -61,8 +61,8 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     // KODEIN DEPENDENCIES
-    implementation("org.kodein.di:kodein-di-generic-jvm:5.2.0")
-    implementation("org.kodein.di:kodein-di-framework-android-x:5.2.0")
+    implementation("org.kodein.di:kodein-di:7.3.1")
+    implementation("org.kodein.di:kodein-di-framework-android-x:7.20.2")
 
     // KLUENT
     testImplementation("org.amshove.kluent:kluent-android:1.73")

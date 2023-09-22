@@ -6,35 +6,34 @@ import com.fetchrewards.codingexercise.repository.remoteDataSource.Endpoints
 import com.fetchrewards.codingexercise.repository.remoteDataSource.RemoteDataSource
 import com.fetchrewards.codingexercise.ui.MainViewModelFactory
 import kotlinx.coroutines.Dispatchers
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.provider
-import org.kodein.di.generic.singleton
+import org.kodein.di.DI
+import org.kodein.di.DIAware
+import org.kodein.di.bindProvider
+import org.kodein.di.bindSingleton
+import org.kodein.di.instance
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class App : Application(), KodeinAware {
+class App : Application(), DIAware {
 
-    override val kodein = Kodein.lazy {
+    override val di = DI.lazy {
 
-        bind<Retrofit>() with singleton {
+        bindSingleton<Retrofit> {
             Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BuildConfig.BASE_URL)
                 .build()
         }
 
-        bind<RemoteDataSource>() with singleton {
+        bindSingleton {
             val retrofit = instance<Retrofit>().create(Endpoints::class.java)
             RemoteDataSource(retrofit)
         }
 
-        bind<Repository>() with singleton {
+        bindSingleton {
             Repository(Dispatchers.IO, instance())
         }
 
-        bind() from provider { MainViewModelFactory(instance()) }
+        bindProvider { MainViewModelFactory(instance()) }
     }
 }

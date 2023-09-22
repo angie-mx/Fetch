@@ -13,12 +13,13 @@ import com.fetchrewards.codingexercise.databinding.MainLayoutBinding
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.closestKodein
-import org.kodein.di.generic.instance
+import org.kodein.di.DIAware
+import org.kodein.di.android.closestDI
+import org.kodein.di.instance
 
-class MainActivity : AppCompatActivity(), KodeinAware {
-    override val kodein by closestKodein()
+class MainActivity : AppCompatActivity(), DIAware {
+
+    override val di by closestDI()
 
     private lateinit var binding: MainLayoutBinding
     private val viewModelFactory: MainViewModelFactory by instance()
